@@ -1,0 +1,32 @@
+{
+    "configurations": [
+        {
+            "name": "Charge Simulation",
+            "includePath": [
+                "${workspaceFolder}\\sdl\\include\\**",
+                "${workspaceFolder}\\sdl\\include\\SDL2\\**",
+                "${workspaceFolder}\\sdl\\lib\\**",
+                "${workspaceFolder}\\include\\**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:\\mingw64\\bin\\gcc.exe",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "windows-gcc-x64",
+            "configurationProvider": "ms-vscode.makefile-tools",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            }
+        }
+    ],
+    
+    "version": 4
+}
