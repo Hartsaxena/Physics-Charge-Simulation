@@ -33,3 +33,7 @@
 
 # Debug files
 log.txt
+
+# SDL Library
+sdl2.dll
+sdl/*
