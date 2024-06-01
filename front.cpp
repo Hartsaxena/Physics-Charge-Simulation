@@ -9,10 +9,10 @@ FrontEndManager::FrontEndManager(int windowWidth, int windowHeight,
                                 Color backgroundColor)
 {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        std::cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
+        std::cout<<"SDL could not initialize! SDL_Error: "<<SDL_GetError()<<std::endl;
         this->running = false;
     }
-    std::cout << "SDL initialized!\n";
+    std::cout<<"SDL initialized!\n";
 
     // Create Screen
     Uint32 windowFlags = SDL_WINDOW_SHOWN; // Default Flags
@@ -33,7 +33,7 @@ FrontEndManager::FrontEndManager(int windowWidth, int windowHeight,
 
     std::fill_n(this->firstPressedKeys, SDL_NUM_SCANCODES, false);
 
-    std::cout << "Created FrontEndManager Instance\n";
+    std::cout<<"Created FrontEndManager Instance\n";
 }
 
 void FrontEndManager::quit() {
@@ -100,7 +100,7 @@ bool FrontEndManager::firstPressedKey(SDL_Keycode key) {
 }
 
 
-void FrontEndManager::drawCircle(Position center, int radius, Color color) {
+void FrontEndManager::drawCircle(Position center, int radius, Color color, bool fill) {
     /*
     Mid-point circle drawing algorithm.
     */
@@ -131,5 +131,9 @@ void FrontEndManager::drawCircle(Position center, int radius, Color color) {
             dx += 2;
             err += dx - (radius << 1);
         }
+    }
+
+    if (fill && radius > 1) {
+        this->drawCircle(center, radius - 1, color, true);
     }
 }

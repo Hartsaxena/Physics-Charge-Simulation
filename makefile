@@ -3,22 +3,21 @@ SDLINCLUDE=-lmingw32 -lSDL2main -lSDL2
 SRC=$(wildcard *.cpp)
 
 
-all: main.exe
-	main.exe | tee log.txt
+run: clean main.exe
+	main.exe
 
-main.exe: $(SRC:.cpp=.o)
-	$(CC) -Isdl\include -Lsdl\lib -o $@ $(SRC:.o=.o) -Iinclude $(SDLINCLUDE) -Wall
+log: clean main.exe
+	@cmd /c "main.exe > log.txt 2>&1"
 
-main.o: main.cpp
-	$(CC) -Isdl\include -Lsdl\lib -c $^ -Iinclude $(SDLINCLUDE) -Wall
+debug: clean debug_main.exe
+	gdb -ex run debug_main.exe
 
-charges.o : charges.cpp
-	$(CC) -Isdl\include -Lsdl\lib -c $^ -Iinclude $(SDLINCLUDE) -Wall
+debug_main.exe:
+	$(CC) -Isdl\include -Lsdl\lib -o $@ $(SRC) -Iinclude $(SDLINCLUDE) -Wall -g -O0
 
-front.o : front.cpp
-	$(CC) -Isdl\include -Lsdl\lib -c $^ -Iinclude $(SDLINCLUDE) -Wall
+main.exe:
+	$(CC) -Isdl\include -Lsdl\lib -o $@ $(SRC) -Iinclude $(SDLINCLUDE) -Wall
 
 clean:
-	del *.o
 	del *.exe
 	del log.txt

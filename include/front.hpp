@@ -57,7 +57,7 @@ public:
     bool firstPressedKey(SDL_Scancode scancode);
     bool firstPressedKey(SDL_Keycode keycode);
 
-    void drawCircle(Position center, int radius, Color color);
+    void drawCircle(Position center, int radius, Color color, bool fill);
 
 private:
     SDL_Window* window;
